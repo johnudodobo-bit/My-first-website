@@ -2,145 +2,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John's Website</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #101827;
-            color: white;
-        }
-
-        header {
-            background: #080f1d;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            color: #38bdf8;
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 15px;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 100px 20px;
-            background: linear-gradient(135deg, #102b48, #101827);
-        }
-
-        .hero h1 {
-            font-size: 42px;
-        }
-
-        .hero h1 span {
-            color: #38bdf8;
-        }
-
-        .hero p {
-            color: #cbd5e1;
-            font-size: 18px;
-            line-height: 1.7;
-        }
-
-        .button {
-            display: inline-block;
-            background: #38bdf8;
-            color: #082f49;
-            padding: 14px 25px;
-            border-radius: 8px;
-            text-decoration: none;
-            margin-top: 20px;
-            font-weight: bold;
-        }
-
-        .about {
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        .about h2 {
-            color: #38bdf8;
-        }
-
-        .about p {
-            color: #cbd5e1;
-            max-width: 600px;
-            margin: auto;
-            line-height: 1.7;
-        }
-
-        footer {
-            text-align: center;
-            padding: 25px;
-            background: #080f1d;
-            color: #94a3b8;
-        }
-
-        @media (max-width: 500px) {
-            header {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .hero h1 {
-                font-size: 32px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#087443">
+  <title>Trustnaija | Shop. Sell. Promote. Earn.</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      color: #17251e;
+      background: #fff;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+    header {
+      background: #fff;
+      padding: 16px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      border-bottom: 1px solid #e7eee9;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .logo { font-size: 25px; font-weight: 800; color: #087443; }
+    nav { display: flex; gap: 22px; flex-wrap: wrap; }
+    nav a { font-size: 14px; font-weight: bold; }
+    nav a:hover { color: #087443; }
+    .account { display: flex; gap: 10px; align-items: center; }
+    .btn {
+      display: inline-block;
+      padding: 11px 19px;
+      border-radius: 7px;
+      font-weight: bold;
+      font-size: 14px;
+      border: 0;
+      cursor: pointer;
+    }
+    .green { background: #087443; color: white; }
+    .light { background: #e8f5ed; color: #087443; }
+    .hero {
+      background: linear-gradient(120deg, #e9f7ee, #f7fbf8);
+      padding: 75px 6%;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 35px;
+    }
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 60px);
+      line-height: 1.12;
+      color: #075b35;
+      margin: 15px 0;
+    }
+    .hero p { max-width: 570px; color: #52645a; font-size: 17px; }
+    .hero-image {
+      min-height: 280px;
+      border-radius: 22px;
+      background: linear-gradient(145deg, #087443, #21a568);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+      font-size: 35px;
+      font-weight: bold;
+    }
+    .search {
+      display: flex;
+      max-width: 540px;
+      margin-top: 25px;
+      background: white;
+      padding: 7px;
+      border-radius: 9px;
+      box-shadow: 0 5px 20px #00000012;
+    }
+    .search input {
+      flex: 1;
+      min-width: 0;
+      padding: 12px;
+      border: 0;
+      outline: none;
+      font-size: 15px;
+    }
+    section { padding: 60px 6%; }
+    .section-heading { text-align: center; margin-bottom: 30px; }
+    .section-heading h2 { font-size: 30px; color: #075b35; }
+    .section-heading p { color: #68766e; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .category {
+      padding: 25px 18px;
+      border: 1px solid #e5eee8;
+      border-radius: 13px;
+      background: white;
+      transition: 0.2s;
+    }
+    .category:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 22px #0000000c;
+    }
+    .category .symbol { font-size: 32px; }
+    .category h3 { margin: 9px 0 4px; color: #087443; }
+    .category p { font-size: 14px; color: #68766e; }
+    .steps { background: #f5faf6; }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .feature {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid #e5eee8;
+    }
+    .feature h3 { color: #087443; margin-bottom: 8px; }
+    .cta {
+      background: #087443;
+      color: white;
+      text-align: center;
+      padding: 55px 6%;
+    }
+    .cta h2 { font-size: 30px; margin-bottom: 10px; }
+    .cta p { margin-bottom: 20px; }
+    footer {
+      background: #10251b;
+      color: #d9e8de;
+      padding: 35px 6%;
+      text-align: center;
+    }
+    footer .logo { color: #5de09c; margin-bottom: 8px; }
+    footer p { font-size: 13px; margin-top: 8px; }
+    @media (max-width: 800px) {
+      header { flex-wrap: wrap; }
+      nav { order: 3; width: 100%; justify-content: center; gap: 16px; }
+      .hero { grid-template-columns: 1fr; padding-top: 50px; }
+      .hero-image { min-height: 180px; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .features { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 420px) {
+      .account { gap: 6px; }
+      .btn { padding: 9px 12px; }
+      .grid { gap: 10px; }
+      .category { padding: 17px 12px; }
+    }
+  </style>
 </head>
-
 <body>
 
-    <header>
-        <div class="logo">John's Website</div>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-        </nav>
-    </header>
+<header>
+  <a class="logo" href="#">Trustnaija</a>
+  <nav>
+    <a href="#shop">Shop</a>
+    <a href="#sell">Sell</a>
+    <a href="#promote">Promote</a>
+    <a href="#earn">Earn</a>
+    <a href="#about">About</a>
+  </nav>
+  <div class="account">
+    <a class="btn light" href="#register">Login</a>
+    <a class="btn green" href="#register">Register</a>
+  </div>
+</header>
 
-    <section class="hero" id="home">
-        <h1>Welcome to <span>John's Website!</span></h1>
+<main>
+  <section class="hero">
+    <div>
+      <p><strong>WELCOME TO TRUSTNAIJA</strong></p>
+      <h1>Shop. Sell.<br>Promote. Earn.</h1>
+      <p>Nigeria's marketplace for products, services and business growth. Discover opportunities, connect with sellers and grow your business.</p>
+      <form class="search" id="searchForm">
+        <input id="searchInput" type="search" placeholder="What are you looking for?">
+        <button class="btn green" type="submit">Search</button>
+      </form>
+      <p id="searchMessage" aria-live="polite" style="margin-top:10px;font-size:13px"></p>
+    </div>
+    <div class="hero-image">
+      Your Marketplace.<br>Your Opportunity.
+    </div>
+  </section>
 
-        <p>
-            Hello! Welcome to my personal website.
-            I'm learning web development and building
-            something amazing.
-        </p>
+  <section id="shop">
+    <div class="section-heading">
+      <h2>Explore Trustnaija</h2>
+      <p>Everything you need, all in one marketplace.</p>
+    </div>
+    <div class="grid">
+      <a class="category" href="#register">
+        <div class="symbol">🛍️</div>
+        <h3>Shop</h3>
+        <p>Discover products and services from sellers.</p>
+      </a>
+      <a class="category" id="sell" href="#register">
+        <div class="symbol">🏪</div>
+        <h3>Sell</h3>
+        <p>Open your store and reach more customers.</p>
+      </a>
+      <a class="category" id="promote" href="#register">
+        <div class="symbol">📢</div>
+        <h3>Promote</h3>
+        <p>Give your business more visibility.</p>
+      </a>
+      <a class="category" id="earn" href="#register">
+        <div class="symbol">💰</div>
+        <h3>Earn</h3>
+        <p>Explore approved referral and earning opportunities.</p>
+      </a>
+    </div>
+  </section>
 
-        <a href="#about" class="button">Explore My Website</a>
-    </section>
+  <section class="steps" id="about">
+    <div class="section-heading">
+      <h2>Why Trustnaija?</h2>
+      <p>A marketplace designed to help people and businesses grow.</p>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <h3>🛒 Shop with ease</h3>
+        <p>Explore products and services from different sellers.</p>
+      </div>
+      <div class="feature">
+        <h3>🚀 Grow your business</h3>
+        <p>Create a seller profile and showcase what you offer.</p>
+      </div>
+      <div class="feature">
+        <h3>🤝 More opportunities</h3>
+        <p>Discover promotions and approved affiliate opportunities.</p>
+      </div>
+    </div>
+  </section>
 
-    <section class="about" id="about">
-        <h2>About Me</h2>
+  <section class="cta" id="register">
+    <h2>Be part of Trustnaija</h2>
+    <p>Join a marketplace built for shopping, selling and growth.</p>
+    <a class="btn light" href="mailto:hello@trustnaija.com?subject=Trustnaija%20Registration%20Interest">Get Started</a>
+  </section>
+</main>
 
-        <p>
-            My name is John. I am interested in technology,
-            creativity, and website development.
-            This is my first website, and I'm excited
-            to keep learning and improving.
-        </p>
-    </section>
+<footer>
+  <div class="logo">Trustnaija</div>
+  <strong>Shop. Sell. Promote. Earn.</strong>
+  <p>Built for opportunities in Nigeria.</p>
+  <p>© 2026 Trustnaija. All rights reserved.</p>
+</footer>
 
-    <footer>
-        <p>© 2026 John's Website. All rights reserved.</p>
-    </footer>
+<script>
+  document.getElementById("searchForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const query = document.getElementById("searchInput").value.trim();
+    const message = document.getElementById("searchMessage");
+    message.textContent = query
+      ? "Marketplace search will be available when product listings are connected."
+      : "Please enter what you want to find.";
+  });
+</script>
 
 </body>
-</html>
+    </html>
+        
