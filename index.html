@@ -140,6 +140,40 @@
     }
     footer .logo { color: #5de09c; margin-bottom: 8px; }
     footer p { font-size: 13px; margin-top: 8px; }
+    #account, #deposit, #dashboard { scroll-margin-top: 90px; }
+    #account {
+      background: #f0f8f3;
+    }
+    .account-card {
+      max-width: 450px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+    }
+    #account input {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    #account button, #dashboard button {
+      width: 100%;
+      padding: 13px;
+      background: #087443;
+      color: white;
+      border: 0;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .message {
+      margin-top: 10px;
+      font-size: 14px;
+      overflow-wrap: anywhere;
+    }
     @media (max-width: 800px) {
       header { flex-wrap: wrap; }
       nav { order: 3; width: 100%; justify-content: center; gap: 16px; }
@@ -168,8 +202,8 @@
     <a href="#about">About</a>
   </nav>
   <div class="account">
-    <a class="btn light" href="#register">Login</a>
-    <a class="btn green" href="#register">Register</a>
+    <a class="btn light" href="#account">Login</a>
+    <a class="btn green" href="#account">Register</a>
   </div>
 </header>
 
@@ -196,22 +230,22 @@
       <p>Everything you need, all in one marketplace.</p>
     </div>
     <div class="grid">
-      <a class="category" href="#register">
+      <a class="category" href="#account">
         <div class="symbol">🛍️</div>
         <h3>Shop</h3>
         <p>Discover products and services from sellers.</p>
       </a>
-      <a class="category" id="sell" href="#register">
+      <a class="category" id="sell" href="#account">
         <div class="symbol">🏪</div>
         <h3>Sell</h3>
         <p>Open your store and reach more customers.</p>
       </a>
-      <a class="category" id="promote" href="#register">
+      <a class="category" id="promote" href="#account">
         <div class="symbol">📢</div>
         <h3>Promote</h3>
         <p>Give your business more visibility.</p>
       </a>
-      <a class="category" id="earn" href="#register">
+      <a class="category" id="earn" href="#account">
         <div class="symbol">💰</div>
         <h3>Earn</h3>
         <p>Explore approved referral and earning opportunities.</p>
@@ -240,12 +274,65 @@
     </div>
   </section>
 
-  <section class="cta" id="register">
+  <section class="cta">
     <h2>Be part of Trustnaija</h2>
     <p>Join a marketplace built for shopping, selling and growth.</p>
-    <a class="btn light" href="mailto:hello@trustnaija.com?subject=Trustnaija%20Registration%20Interest">Get Started</a>
+    <a class="btn light" href="#account">Get Started</a>
   </section>
 </main>
+
+<section id="account">
+  <div class="account-card">
+    <h2 style="color:#087443;text-align:center;">Join Trustnaija</h2>
+    <p style="text-align:center;">Create your customer account</p>
+
+    <form id="registerForm">
+      <label for="fullName">Full name</label>
+      <input id="fullName" type="text" required placeholder="Your full name">
+
+      <label for="phone">Phone number</label>
+      <input id="phone" type="tel" required placeholder="Your phone number">
+
+      <label for="email">Email address</label>
+      <input id="email" type="email" required placeholder="Your email">
+
+      <label for="password">Password</label>
+      <input id="password" type="password" minlength="8" required placeholder="At least 8 characters">
+
+      <button type="submit">Create Account</button>
+      <p class="message" id="registerMessage" aria-live="polite"></p>
+    </form>
+
+    <hr style="margin:20px 0;">
+
+    <h3>Already registered?</h3>
+    <form id="loginForm">
+      <label for="loginEmail">Email address</label>
+      <input id="loginEmail" type="email" required placeholder="Email address">
+
+      <label for="loginPassword">Password</label>
+      <input id="loginPassword" type="password" required placeholder="Password">
+
+      <button type="submit">Login</button>
+      <p class="message" id="loginMessage" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<section id="deposit" style="text-align:center;">
+  <h2>Trustnaija Deposit</h2>
+  <p>Your deposit area will be available after we connect a secure payment provider.</p>
+  <p style="margin:15px 0;">
+    <a class="btn green" href="#dashboard">Skip deposit and go to dashboard</a>
+  </p>
+</section>
+
+<section id="dashboard" style="text-align:center;background:#f5faf6;">
+  <h2>Customer Dashboard</h2>
+  <p>Welcome to Trustnaija.</p>
+  <p style="margin:15px 0;">Your account dashboard will grow as we add marketplace features.</p>
+  <button id="logoutButton">Logout</button>
+</section>
 
 <footer>
   <div class="logo">Trustnaija</div>
@@ -265,6 +352,75 @@
   });
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = "https://mynazjxzqdcicexrasbe.supabase.co";
+const SUPABASE_KEY = "sb_publishable_V0kzj3SXnaKgj1lyvxkcxQ_rQrgJarl";
+
+const trustnaija = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+document.getElementById("registerForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const message = document.getElementById("registerMessage");
+  message.textContent = "Creating your account...";
+
+  const fullName = document.getElementById("fullName").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+
+  const { error } = await trustnaija.auth.signUp({
+    email,
+    password,
+    options: {
+      data: {
+        full_name: fullName,
+        phone: phone
+      }
+    }
+  });
+
+  if (error) {
+    message.textContent = error.message;
+  } else {
+    message.textContent =
+      "Registration received! Check your email to confirm your account. Then log in to continue.";
+  }
+});
+
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const message = document.getElementById("loginMessage");
+  message.textContent = "Signing in...";
+
+  const { error } = await trustnaija.auth.signInWithPassword({
+    email: document.getElementById("loginEmail").value.trim(),
+    password: document.getElementById("loginPassword").value
+  });
+
+  if (error) {
+    message.textContent = error.message;
+  } else {
+    window.location.hash = "deposit";
+  }
+});
+
+document.getElementById("logoutButton").addEventListener("click", async () => {
+  const { error } = await trustnaija.auth.signOut();
+
+  if (error) {
+    alert("Logout failed: " + error.message);
+  } else {
+    window.location.hash = "account";
+  }
+});
+</script>
+
 </body>
     </html>
-        
+  
