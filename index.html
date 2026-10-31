@@ -4,356 +4,433 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#087443">
   <title>Trustnaija | Shop. Sell. Promote. Earn.</title>
+  <meta name="description" content="Trustnaija is a marketplace for shopping, selling, promoting businesses and earning.">
+
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: Arial, sans-serif;
-      color: #17251e;
-      background: #fff;
+      background: #f5f8f5;
+      color: #222;
       line-height: 1.6;
     }
-    a { text-decoration: none; color: inherit; }
+
     header {
-      background: #fff;
-      padding: 16px 6%;
+      background: #087a3e;
+      color: white;
+      padding: 18px 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 20px;
-      border-bottom: 1px solid #e7eee9;
-      position: sticky;
-      top: 0;
-      z-index: 10;
+      flex-wrap: wrap;
+      gap: 12px;
     }
-    .logo { font-size: 25px; font-weight: 800; color: #087443; }
-    nav { display: flex; gap: 22px; flex-wrap: wrap; }
-    nav a { font-size: 14px; font-weight: bold; }
-    nav a:hover { color: #087443; }
-    .account { display: flex; gap: 10px; align-items: center; }
-    .btn {
-      display: inline-block;
-      padding: 11px 19px;
-      border-radius: 7px;
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
       font-weight: bold;
       font-size: 14px;
-      border: 0;
-      cursor: pointer;
     }
-    .green { background: #087443; color: white; }
-    .light { background: #e8f5ed; color: #087443; }
+
     .hero {
-      background: linear-gradient(120deg, #e9f7ee, #f7fbf8);
-      padding: 75px 6%;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      align-items: center;
-      gap: 35px;
-    }
-    .hero h1 {
-      font-size: clamp(38px, 6vw, 60px);
-      line-height: 1.12;
-      color: #075b35;
-      margin: 15px 0;
-    }
-    .hero p { max-width: 570px; color: #52645a; font-size: 17px; }
-    .hero-image {
-      min-height: 280px;
-      border-radius: 22px;
-      background: linear-gradient(145deg, #087443, #21a568);
+      background: linear-gradient(135deg, #087a3e, #12a45b);
       color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       text-align: center;
-      padding: 30px;
-      font-size: 35px;
-      font-weight: bold;
+      padding: 75px 20px;
     }
-    .search {
-      display: flex;
-      max-width: 540px;
-      margin-top: 25px;
-      background: white;
-      padding: 7px;
-      border-radius: 9px;
-      box-shadow: 0 5px 20px #00000012;
+
+    .hero h1 {
+      font-size: 38px;
+      margin-bottom: 12px;
     }
-    .search input {
-      flex: 1;
-      min-width: 0;
-      padding: 12px;
-      border: 0;
-      outline: none;
-      font-size: 15px;
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 25px;
     }
-    section { padding: 60px 6%; }
-    .section-heading { text-align: center; margin-bottom: 30px; }
-    .section-heading h2 { font-size: 30px; color: #075b35; }
-    .section-heading p { color: #68766e; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: auto;
     }
-    .category {
-      padding: 25px 18px;
-      border: 1px solid #e5eee8;
-      border-radius: 13px;
-      background: white;
-      transition: 0.2s;
+
+    section {
+      padding: 45px 0;
     }
-    .category:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 22px #0000000c;
+
+    h2 {
+      color: #087a3e;
+      margin-bottom: 15px;
+      text-align: center;
     }
-    .category .symbol { font-size: 32px; }
-    .category h3 { margin: 9px 0 4px; color: #087443; }
-    .category p { font-size: 14px; color: #68766e; }
-    .steps { background: #f5faf6; }
+
+    .intro {
+      text-align: center;
+      max-width: 700px;
+      margin: auto;
+    }
+
     .features {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+      margin-top: 25px;
     }
+
     .feature {
       background: white;
       padding: 25px;
-      border-radius: 12px;
-      border: 1px solid #e5eee8;
-    }
-    .feature h3 { color: #087443; margin-bottom: 8px; }
-    .cta {
-      background: #087443;
-      color: white;
+      border-radius: 10px;
       text-align: center;
-      padding: 55px 6%;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
     }
-    .cta h2 { font-size: 30px; margin-bottom: 10px; }
-    .cta p { margin-bottom: 20px; }
-    footer {
-      background: #10251b;
-      color: #d9e8de;
-      padding: 35px 6%;
-      text-align: center;
+
+    .feature h3 {
+      color: #087a3e;
+      margin-bottom: 8px;
     }
-    footer .logo { color: #5de09c; margin-bottom: 8px; }
-    footer p { font-size: 13px; margin-top: 8px; }
-    #account, #deposit, #dashboard { scroll-margin-top: 90px; }
-    #account {
-      background: #f0f8f3;
-    }
-    .account-card {
-      max-width: 450px;
-      margin: auto;
+
+    .panel {
       background: white;
+      max-width: 520px;
+      margin: 20px auto;
       padding: 25px;
       border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
     }
-    #account input {
+
+    label {
       display: block;
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0 16px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+      margin: 12px 0 5px;
+      font-weight: bold;
     }
-    #account button, #dashboard button {
+
+    input {
       width: 100%;
       padding: 13px;
-      background: #087443;
-      color: white;
-      border: 0;
+      border: 1px solid #ccc;
       border-radius: 6px;
-      font-weight: bold;
+      font-size: 15px;
+    }
+
+    button, .button {
+      display: inline-block;
+      background: #087a3e;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 6px;
       cursor: pointer;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      margin-top: 12px;
     }
+
+    button:hover, .button:hover {
+      background: #056332;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .secondary {
+      background: #555;
+    }
+
+    .secondary:hover {
+      background: #333;
+    }
+
     .message {
-      margin-top: 10px;
-      font-size: 14px;
+      margin-top: 12px;
       overflow-wrap: anywhere;
+      font-size: 14px;
     }
-    @media (max-width: 800px) {
-      header { flex-wrap: wrap; }
-      nav { order: 3; width: 100%; justify-content: center; gap: 16px; }
-      .hero { grid-template-columns: 1fr; padding-top: 50px; }
-      .hero-image { min-height: 180px; }
-      .grid { grid-template-columns: repeat(2, 1fr); }
-      .features { grid-template-columns: 1fr; }
+
+    .small-note {
+      color: #666;
+      font-size: 13px;
+      margin-top: 12px;
     }
-    @media (max-width: 420px) {
-      .account { gap: 6px; }
-      .btn { padding: 9px 12px; }
-      .grid { gap: 10px; }
-      .category { padding: 17px 12px; }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .dashboard-card {
+      background: #f0f8f2;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    footer {
+      background: #075c32;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 29px;
+      }
+
+      header {
+        justify-content: center;
+      }
+
+      nav {
+        justify-content: center;
+      }
     }
   </style>
 </head>
+
 <body>
 
 <header>
-  <a class="logo" href="#">Trustnaija</a>
+  <div class="logo">Trustnaija</div>
+
   <nav>
-    <a href="#shop">Shop</a>
-    <a href="#sell">Sell</a>
-    <a href="#promote">Promote</a>
-    <a href="#earn">Earn</a>
+    <a href="#home">Home</a>
     <a href="#about">About</a>
+    <a href="#marketplace">Marketplace</a>
+    <a href="#account">Account</a>
+    <a href="#dashboard">Dashboard</a>
   </nav>
-  <div class="account">
-    <a class="btn light" href="#account">Login</a>
-    <a class="btn green" href="#account">Register</a>
-  </div>
 </header>
 
 <main>
-  <section class="hero">
-    <div>
-      <p><strong>WELCOME TO TRUSTNAIJA</strong></p>
-      <h1>Shop. Sell.<br>Promote. Earn.</h1>
-      <p>Nigeria's marketplace for products, services and business growth. Discover opportunities, connect with sellers and grow your business.</p>
-      <form class="search" id="searchForm">
-        <input id="searchInput" type="search" placeholder="What are you looking for?">
-        <button class="btn green" type="submit">Search</button>
-      </form>
-      <p id="searchMessage" aria-live="polite" style="margin-top:10px;font-size:13px"></p>
-    </div>
-    <div class="hero-image">
-      Your Marketplace.<br>Your Opportunity.
+
+  <section class="hero" id="home">
+    <div class="container">
+      <h1>Welcome to Trustnaija</h1>
+      <p>Shop. Sell. Promote. Earn.</p>
+      <p>Your marketplace for products, services and business opportunities.</p>
+      <a href="#account" class="button">Join Trustnaija</a>
     </div>
   </section>
 
-  <section id="shop">
-    <div class="section-heading">
-      <h2>Explore Trustnaija</h2>
-      <p>Everything you need, all in one marketplace.</p>
-    </div>
-    <div class="grid">
-      <a class="category" href="#account">
-        <div class="symbol">🛍️</div>
-        <h3>Shop</h3>
-        <p>Discover products and services from sellers.</p>
-      </a>
-      <a class="category" id="sell" href="#account">
-        <div class="symbol">🏪</div>
-        <h3>Sell</h3>
-        <p>Open your store and reach more customers.</p>
-      </a>
-      <a class="category" id="promote" href="#account">
-        <div class="symbol">📢</div>
-        <h3>Promote</h3>
-        <p>Give your business more visibility.</p>
-      </a>
-      <a class="category" id="earn" href="#account">
-        <div class="symbol">💰</div>
-        <h3>Earn</h3>
-        <p>Explore approved referral and earning opportunities.</p>
-      </a>
-    </div>
-  </section>
+  <section id="about">
+    <div class="container">
+      <h2>About Trustnaija</h2>
+      <p class="intro">
+        Trustnaija is a marketplace designed to connect customers,
+        independent sellers and businesses. Discover products,
+        offer services, promote businesses and explore earning opportunities.
+      </p>
 
-  <section class="steps" id="about">
-    <div class="section-heading">
-      <h2>Why Trustnaija?</h2>
-      <p>A marketplace designed to help people and businesses grow.</p>
-    </div>
-    <div class="features">
-      <div class="feature">
-        <h3>🛒 Shop with ease</h3>
-        <p>Explore products and services from different sellers.</p>
-      </div>
-      <div class="feature">
-        <h3>🚀 Grow your business</h3>
-        <p>Create a seller profile and showcase what you offer.</p>
-      </div>
-      <div class="feature">
-        <h3>🤝 More opportunities</h3>
-        <p>Discover promotions and approved affiliate opportunities.</p>
+      <div class="features">
+        <div class="feature">
+          <h3>Shop</h3>
+          <p>Discover products and services from different sellers.</p>
+        </div>
+
+        <div class="feature">
+          <h3>Sell</h3>
+          <p>Build your business and reach more customers.</p>
+        </div>
+
+        <div class="feature">
+          <h3>Promote</h3>
+          <p>Give your business more visibility.</p>
+        </div>
+
+        <div class="feature">
+          <h3>Earn</h3>
+          <p>Explore approved referral and affiliate opportunities.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="cta">
-    <h2>Be part of Trustnaija</h2>
-    <p>Join a marketplace built for shopping, selling and growth.</p>
-    <a class="btn light" href="#account">Get Started</a>
+  <section id="marketplace">
+    <div class="container">
+      <h2>Explore the Marketplace</h2>
+
+      <div class="panel">
+        <label for="searchInput">What are you looking for?</label>
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Search products or services"
+        >
+        <button type="button" id="searchButton">Search</button>
+        <p id="searchMessage" class="message"></p>
+        <p class="small-note">
+          Marketplace listings will appear here when the product system is connected.
+        </p>
+      </div>
+    </div>
   </section>
+
+  <section id="account">
+    <div class="container">
+      <h2>Join Trustnaija</h2>
+
+      <div class="panel">
+        <h3>Create your account</h3>
+
+        <form id="registerForm">
+          <label for="fullName">Full name</label>
+          <input id="fullName" type="text" required autocomplete="name">
+
+          <label for="phone">Phone number</label>
+          <input id="phone" type="tel" required autocomplete="tel">
+
+          <label for="email">Email address</label>
+          <input id="email" type="email" required autocomplete="email">
+
+          <label for="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            required
+            minlength="6"
+            autocomplete="new-password"
+          >
+
+          <button type="submit" id="registerButton">Create Account</button>
+        </form>
+
+        <p id="registerMessage" class="message" aria-live="polite"></p>
+
+        <button type="button" id="resendButton" class="secondary hidden">
+          Resend Confirmation Email
+        </button>
+
+        <p class="small-note">
+          Registration is free. You do not need to deposit money to create an account.
+        </p>
+      </div>
+
+      <div class="panel">
+        <h3>Already have an account?</h3>
+
+        <form id="loginForm">
+          <label for="loginEmail">Email address</label>
+          <input
+            id="loginEmail"
+            type="email"
+            required
+            autocomplete="email"
+          >
+
+          <label for="loginPassword">Password</label>
+          <input
+            id="loginPassword"
+            type="password"
+            required
+            autocomplete="current-password"
+          >
+
+          <button type="submit" id="loginButton">Login</button>
+        </form>
+
+        <p id="loginMessage" class="message" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="deposit">
+    <div class="container">
+      <h2>Deposit</h2>
+
+      <div class="panel">
+        <h3>Fund your Trustnaija account</h3>
+        <p>
+          Deposits are not available yet. We are preparing a secure
+          payment system before accepting real money.
+        </p>
+
+        <p class="small-note">
+          Never send money to a personal account claiming to be Trustnaija.
+        </p>
+
+        <button type="button" id="skipDepositButton">
+          Skip Deposit and Continue
+        </button>
+
+        <p id="depositMessage" class="message"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="dashboard">
+    <div class="container">
+      <h2>Customer Dashboard</h2>
+
+      <div class="panel">
+        <div id="signedOutMessage">
+          <p>Please log in to access your customer dashboard.</p>
+          <a href="#account" class="button">Go to Login</a>
+        </div>
+
+        <div id="signedInContent" class="hidden">
+          <h3>Welcome to your dashboard</h3>
+          <p id="customerEmail"></p>
+
+          <div class="dashboard-card">
+            <h3>My Account</h3>
+            <p>Your customer account is connected.</p>
+          </div>
+
+          <div class="dashboard-card">
+            <h3>My Orders</h3>
+            <p>Your order history will appear here when shopping is connected.</p>
+          </div>
+
+          <div class="dashboard-card">
+            <h3>My Wallet</h3>
+            <p>Your wallet will become available after secure payment setup.</p>
+          </div>
+
+          <button type="button" id="logoutButton" class="secondary">
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </main>
 
-<section id="account">
-  <div class="account-card">
-    <h2 style="color:#087443;text-align:center;">Join Trustnaija</h2>
-    <p style="text-align:center;">Create your customer account</p>
-
-    <form id="registerForm">
-      <label for="fullName">Full name</label>
-      <input id="fullName" type="text" required placeholder="Your full name">
-
-      <label for="phone">Phone number</label>
-      <input id="phone" type="tel" required placeholder="Your phone number">
-
-      <label for="email">Email address</label>
-      <input id="email" type="email" required placeholder="Your email">
-
-      <label for="password">Password</label>
-      <input id="password" type="password" minlength="8" required placeholder="At least 8 characters">
-
-      <button type="submit">Create Account</button>
-      <p class="message" id="registerMessage" aria-live="polite"></p>
-    </form>
-
-    <hr style="margin:20px 0;">
-
-    <h3>Already registered?</h3>
-    <form id="loginForm">
-      <label for="loginEmail">Email address</label>
-      <input id="loginEmail" type="email" required placeholder="Email address">
-
-      <label for="loginPassword">Password</label>
-      <input id="loginPassword" type="password" required placeholder="Password">
-
-      <button type="submit">Login</button>
-      <p class="message" id="loginMessage" aria-live="polite"></p>
-    </form>
-  </div>
-</section>
-
-<section id="deposit" style="text-align:center;">
-  <h2>Trustnaija Deposit</h2>
-  <p>Your deposit area will be available after we connect a secure payment provider.</p>
-  <p style="margin:15px 0;">
-    <a class="btn green" href="#dashboard">Skip deposit and go to dashboard</a>
-  </p>
-</section>
-
-<section id="dashboard" style="text-align:center;background:#f5faf6;">
-  <h2>Customer Dashboard</h2>
-  <p>Welcome to Trustnaija.</p>
-  <p style="margin:15px 0;">Your account dashboard will grow as we add marketplace features.</p>
-  <button id="logoutButton">Logout</button>
-</section>
-
 <footer>
-  <div class="logo">Trustnaija</div>
-  <strong>Shop. Sell. Promote. Earn.</strong>
-  <p>Built for opportunities in Nigeria.</p>
-  <p>© 2026 Trustnaija. All rights reserved.</p>
+  <p><strong>Trustnaija</strong></p>
+  <p>Shop. Sell. Promote. Earn.</p>
+  <p>&copy; 2026 Trustnaija. All rights reserved.</p>
 </footer>
 
-<script>
-  document.getElementById("searchForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    const query = document.getElementById("searchInput").value.trim();
-    const message = document.getElementById("searchMessage");
-    message.textContent = query
-      ? "Marketplace search will be available when product listings are connected."
-      : "Please enter what you want to find.";
-  });
-</script>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
+"use strict";
+
+// Trustnaija Supabase connection
 const SUPABASE_URL = "https://mynazjxzqdcicexrasbe.supabase.co";
 const SUPABASE_KEY = "sb_publishable_V0kzj3SXnaKgj1lyvxkcxQ_rQrgJarl";
 
@@ -362,65 +439,215 @@ const trustnaija = window.supabase.createClient(
   SUPABASE_KEY
 );
 
-document.getElementById("registerForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
+const registerForm = document.getElementById("registerForm");
+const loginForm = document.getElementById("loginForm");
+const registerMessage = document.getElementById("registerMessage");
+const loginMessage = document.getElementById("loginMessage");
+const resendButton = document.getElementById("resendButton");
+const registerButton = document.getElementById("registerButton");
+const loginButton = document.getElementById("loginButton");
 
-  const message = document.getElementById("registerMessage");
-  message.textContent = "Creating your account...";
+let lastRegistrationEmail = "";
+
+// Customer registration
+registerForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
   const fullName = document.getElementById("fullName").value.trim();
   const phone = document.getElementById("phone").value.trim();
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
 
-  const { error } = await trustnaija.auth.signUp({
-    email,
-    password,
-    options: {
-      data: {
-        full_name: fullName,
-        phone: phone
+  registerButton.disabled = true;
+  registerMessage.textContent = "Creating your account...";
+  resendButton.classList.add("hidden");
+
+  try {
+    const { data, error } = await trustnaija.auth.signUp({
+      email: email,
+      password: password,
+      options: {
+        emailRedirectTo:
+          "https://johnudodobo-bit.github.io/My-first-website/",
+        data: {
+          full_name: fullName,
+          phone: phone
+        }
       }
+    });
+
+    if (error) {
+      registerMessage.textContent = error.message;
+    } else {
+      lastRegistrationEmail = email;
+
+      registerMessage.textContent =
+        "Registration request received. Check your inbox and spam folder for the confirmation email. Confirm your email before logging in.";
+
+      resendButton.classList.remove("hidden");
+
+      if (data.user && data.user.identities &&
+          data.user.identities.length === 0) {
+        registerMessage.textContent =
+          "This email may already be registered. Try logging in or use Resend Confirmation Email.";
+      }
+    }
+  } catch (error) {
+    registerMessage.textContent =
+      "Something went wrong. Please try again.";
+  } finally {
+    registerButton.disabled = false;
+  }
+});
+
+// Resend confirmation email
+resendButton.addEventListener("click", async () => {
+  const email =
+    lastRegistrationEmail ||
+    document.getElementById("email").value.trim();
+
+  if (!email) {
+    registerMessage.textContent =
+      "Enter your email address first.";
+    return;
+  }
+
+  resendButton.disabled = true;
+  resendButton.textContent = "Sending...";
+
+  try {
+    const { error } = await trustnaija.auth.resend({
+      type: "signup",
+      email: email,
+      options: {
+        emailRedirectTo:
+          "https://johnudodobo-bit.github.io/My-first-website/"
+      }
+    });
+
+    if (error) {
+      registerMessage.textContent =
+        "Could not resend confirmation email: " + error.message;
+    } else {
+      registerMessage.textContent =
+        "A new confirmation request was submitted. Check your inbox and spam folder.";
+    }
+  } catch (error) {
+    registerMessage.textContent =
+      "Could not send the request. Please try again later.";
+  } finally {
+    resendButton.disabled = false;
+    resendButton.textContent = "Resend Confirmation Email";
+  }
+});
+
+// Customer login
+loginForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const email =
+    document.getElementById("loginEmail").value.trim();
+
+  const password =
+    document.getElementById("loginPassword").value;
+
+  loginButton.disabled = true;
+  loginMessage.textContent = "Signing in...";
+
+  try {
+    const { error } = await trustnaija.auth.signInWithPassword({
+      email: email,
+      password: password
+    });
+
+    if (error) {
+      loginMessage.textContent = error.message;
+    } else {
+      loginMessage.textContent = "Login successful.";
+      window.location.hash = "deposit";
+    }
+  } catch (error) {
+    loginMessage.textContent =
+      "Unable to log in. Please try again.";
+  } finally {
+    loginButton.disabled = false;
+  }
+});
+
+// Skip deposit
+document.getElementById("skipDepositButton")
+  .addEventListener("click", async () => {
+    const { data } = await trustnaija.auth.getSession();
+
+    if (!data.session) {
+      document.getElementById("depositMessage").textContent =
+        "Please log in first to continue to your dashboard.";
+      return;
+    }
+
+    window.location.hash = "dashboard";
+  });
+
+// Logout
+document.getElementById("logoutButton")
+  .addEventListener("click", async () => {
+    const { error } = await trustnaija.auth.signOut();
+
+    if (error) {
+      alert("Logout failed: " + error.message);
+    } else {
+      window.location.hash = "account";
     }
   });
 
-  if (error) {
-    message.textContent = error.message;
-  } else {
-    message.textContent =
-      "Registration received! Check your email to confirm your account. Then log in to continue.";
-  }
-});
+// Marketplace search placeholder
+document.getElementById("searchButton")
+  .addEventListener("click", () => {
+    const query =
+      document.getElementById("searchInput").value.trim();
 
-document.getElementById("loginForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
+    const message =
+      document.getElementById("searchMessage");
 
-  const message = document.getElementById("loginMessage");
-  message.textContent = "Signing in...";
-
-  const { error } = await trustnaija.auth.signInWithPassword({
-    email: document.getElementById("loginEmail").value.trim(),
-    password: document.getElementById("loginPassword").value
+    message.textContent = query
+      ? "Marketplace search will be available when product listings are connected."
+      : "Please enter what you want to find.";
   });
 
-  if (error) {
-    message.textContent = error.message;
+// Update dashboard according to login status
+async function updateCustomerDashboard() {
+  const { data } = await trustnaija.auth.getSession();
+  const session = data.session;
+
+  const signedOut =
+    document.getElementById("signedOutMessage");
+
+  const signedIn =
+    document.getElementById("signedInContent");
+
+  const customerEmail =
+    document.getElementById("customerEmail");
+
+  if (session) {
+    signedOut.classList.add("hidden");
+    signedIn.classList.remove("hidden");
+    customerEmail.textContent =
+      "Logged in as: " + session.user.email;
   } else {
-    window.location.hash = "deposit";
+    signedOut.classList.remove("hidden");
+    signedIn.classList.add("hidden");
+    customerEmail.textContent = "";
   }
+}
+
+trustnaija.auth.onAuthStateChange(() => {
+  updateCustomerDashboard();
 });
 
-document.getElementById("logoutButton").addEventListener("click", async () => {
-  const { error } = await trustnaija.auth.signOut();
+updateCustomerDashboard();
 
-  if (error) {
-    alert("Logout failed: " + error.message);
-  } else {
-    window.location.hash = "account";
-  }
-});
 </script>
 
 </body>
-    </html>
+  </html>
   
